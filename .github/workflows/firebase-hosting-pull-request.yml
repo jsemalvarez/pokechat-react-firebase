@@ -19,7 +19,7 @@ jobs:
       - run: npm install -g vite
       - name: build
       - run: npm run build
-      - name: Firebase deploy
+      - name: Deploy to Firebase
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
