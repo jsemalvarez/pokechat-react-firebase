@@ -1,8 +1,8 @@
-import React from 'react'
+import { LoginPage } from '../features/auth/pages/LoginPage'
 import '../styles/global.css'
 
 export const App = () => {
   return (
-    <div>Hola Chat!!</div>
+    <LoginPage />
   )
 }
