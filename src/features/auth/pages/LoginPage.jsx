@@ -1,41 +1,47 @@
 
 export const LoginPage = () => {
-  return (
-    <div className="login-page">
 
-        <div className="login-page__team login-page__team--mystic">
-            <img 
-                className="login-page__img" 
-                src="/assets/img/mystic.png" 
-                alt="instinct" 
-            />   
-        </div>
+    const onClick = () => {}
 
-        <div className="login-page__team login-page__team--valor">
-            <img 
-                className="login-page__img" 
-                src="/assets/img/valor.png" 
-                alt="instinct" 
-            />
-        </div>
+    return (
+        <div className="login-page">
 
-        <div className="login-page__team login-page__team--instinct">
-            <img 
-                className="login-page__img" 
-                src="/assets/img/instinct.png" 
-                alt="instinct" 
-            />
-        </div>
-
-        <div className="login-page__form">
-            <div className="form__from--content">
-                <h2>pokemon chat</h2>
-                <p>mar del plata</p>
-                <p>ingresar con</p>
-                <button>google</button>
+            <div className="login-page__team login-page__team--mystic">
+                <img 
+                    className="login-page__img" 
+                    src="/assets/img/mystic.png" 
+                    alt="instinct" 
+                />   
             </div>
-        </div>
 
-    </div>
-  )
+            <div className="login-page__team login-page__team--valor">
+                <img 
+                    className="login-page__img" 
+                    src="/assets/img/valor.png" 
+                    alt="instinct" 
+                />
+            </div>
+
+            <div className="login-page__team login-page__team--instinct">
+                <img 
+                    className="login-page__img" 
+                    src="/assets/img/instinct.png" 
+                    alt="instinct" 
+                />
+            </div>
+
+            <div className="login-page__form">
+                <div className="login-page__form--content">
+                    <h2 className="login-page__form--title">pokemon chat</h2>
+                    <p className="login-page__form--location">mar del plata</p>
+                    <p className="login-page__form--prompt">ingresar con</p>
+                    <button 
+                        className="login-page__form--button"
+                        onClick={ onClick }
+                    >google</button>
+                </div>
+            </div>
+
+        </div>
+    )
 }
