@@ -2,15 +2,16 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { LoginPage } from '../../features/auth/pages/LoginPage';
 import { ConfigUserPage } from '../../features/users/pages/ConfigUserPage';
+import { Loader } from '../../common/components/Loader';
 
 
 
 export const AppRoutes = () => {
 
-  const status = 'authenticated';
+  const status = 'authenticated'; // checking / authenticated
 
   if ( status === 'checking' ) {
-    return <p>Cargando...</p>
+    return <Loader />
   }
 
 
