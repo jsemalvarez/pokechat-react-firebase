@@ -1,20 +1,14 @@
-import { useState } from "react"
 import { useForm } from "../../../common/hooks/useForm"
 import { BgMultiTeam } from "../../../common/components/BgMultiTeam"
+import { useDispatch, useSelector } from "react-redux"
+import { startSaveUser } from "../../../app/state/auth/thunks"
 
-const mockUser = {
-  displayName: 'josema',
-  userName: null,
-  email: 'josemajosemajosema@gmail.com',
-  // photoURL: 'https://lh3.googleusercontent.com/ogw/AF2bZyhVxbt5K8E-twEMx2qOOb7dCdxh0dqwKii330aidFJ5o2E=s32-c-mo',
-  photoURL: "https://lh3.googleusercontent.com/a/ACg8ocJsGupP1u3X7aM0MYNIHqoW2xJ70T-juGZjnF1tlCJBaQmge9y3=s288-c-no",
-  team: null,
-  uid: '12234',
-}
 
 export const ConfigUserPage = () => {
 
-  const [currentUser] = useState(mockUser)
+  const currentUser = useSelector( state => state.auth);
+  const dispatch = useDispatch()
+
 
   const { userName, team, onInputChange } = useForm({
     userName: currentUser.userName || '',
@@ -23,6 +17,27 @@ export const ConfigUserPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+
+    // TODO: validar que el userName no este vacio 
+    if( userName.trim() === ""){
+      console.log('el userName no puede estar vacio')
+      return;
+    }
+
+    const newUser = {
+      displayName: currentUser.displayName,
+      userName: userName,
+      email: currentUser.email,
+      photoURL: currentUser.photoURL,
+      team: team,
+      uid: currentUser.uid,
+    }
+
+    // TODO: validar si el userName ya no esta en uso
+    // TODO: solo se guarda la primera vez, 
+    // el resto de las veces hay que hacer un update
+    dispatch( startSaveUser(newUser) )
+    // TODO: notificar al usuario que se guardo bien
   }
 
   return (
@@ -43,7 +58,6 @@ export const ConfigUserPage = () => {
           </div>
 
           <div className="config-user-page__input-container"> 
-            {/* <label htmlFor="userName">Apodo</label> */}
             <input 
               className="config-user-page__input"
               type="text" 
