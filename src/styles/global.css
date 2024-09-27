@@ -67,6 +67,56 @@ body{
     }
 }
 
+/*/////////////////////////////////////////////////////////////////////
+////////////////////      BG MULTI TEAM       ////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+
+.multi-team{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    min-height: 100vh;
+}
+
+.multi-team__team{
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 12px;
+}
+
+.multi-team__team--mystic{
+    grid-row: 1 / 3;
+    background-image: linear-gradient(to right, var(--mystic-color) , var(--dark-color));
+}
+
+.multi-team__team--valor{
+    grid-row: 3 / 5;
+    justify-content: start;
+    background-image: linear-gradient(to right, var(--dark-color) , var(--valor-color));
+}
+
+.multi-team__team--instinct{
+    grid-row: 5 / 7;
+    background-image: linear-gradient(to right, var(--instinct-color) , var(--dark-color));
+}
+
+.multi-team__img{
+    height: 25vh;
+    object-fit: contain;
+}
+
+.multi-team__content{
+    grid-column: 1 / 13;
+    grid-row: 1 / 7;
+
+}
+
+/*/////////////////////////////////////////////////////////////////////
+//////////////////////      LOGIN PAGE       //////////////////////////
+/////////////////////////////////////////////////////////////////////*/
+
 .login-page{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
