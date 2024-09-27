@@ -200,3 +200,123 @@ body{
         grid-column: 4 / 9;
     }
 }
+
+/*/////////////////////////////////////////////////////////////////////
+//////////////////////      CONFIG USER PAGE       ////////////////////
+/////////////////////////////////////////////////////////////////////*/
+
+.config-user-page{
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.config-user-page__form{
+    min-height: 550px;
+    width: 90%;
+    max-width: 400px;
+    padding: 32px 20px;
+    margin-top: 28px;
+    margin-bottom: 28px;
+    border: solid 2px var(--dark-color);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    backdrop-filter: blur(2.5rem);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.config-user-page__title{
+    text-transform: uppercase;
+}
+
+.config-user-page__user-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 8px;
+}
+
+.config-user-page__img{
+    height: 150px;
+    width: 150px;
+    border-radius: 12px;
+}
+
+.config-user-page p{
+    text-align: center;
+}
+
+.config-user-page__input-container{
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.config-user-page__input{
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: var(--dark-color);
+    color: white;
+}
+
+.config-user-page__input::placeholder{
+    opacity: 1;
+}
+
+.config-user-page__input:focus{
+    background-color: white;
+    color: var(--dark-color);
+}
+
+.config-user-page__team-label{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    background-color: #c0392b;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.config-user-page__team-label--mystic{
+    background-color: var(--mystic-color);
+    color: white;
+}
+
+.config-user-page__team-label--valor{
+    background-color: var(--valor-color);
+    color: white;
+}
+
+.config-user-page__team-label--instinct{
+    background-color: var(--instinct-color);
+    color: white;
+}
+
+.config-user-page__buttom{
+    width: 100%;
+    background-color: #3CBC8D;
+    border: 3px solid #3CBC8D;
+    border-radius: 4px;
+    color: white;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.config-user-page__buttom:hover{
+    background-color: white; 
+    color: #3CBC8D;
+}
