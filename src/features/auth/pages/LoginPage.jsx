@@ -1,7 +1,13 @@
+import { useDispatch } from "react-redux"
+import { startGoogleSignIn } from "../../../app/state/auth/thunks";
 
 export const LoginPage = () => {
 
-    const onClick = () => {}
+    const dispatch = useDispatch();
+
+    const onGoogleLogin = () => {
+        dispatch( startGoogleSignIn() )
+      }
 
     return (
         <div className="login-page">
@@ -37,7 +43,7 @@ export const LoginPage = () => {
                     <p className="login-page__form--prompt">ingresar con</p>
                     <button 
                         className="login-page__form--button"
-                        onClick={ onClick }
+                        onClick={ onGoogleLogin }
                     >google</button>
                 </div>
             </div>
