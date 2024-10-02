@@ -1,5 +1,5 @@
 import { logoutFirebase, singInWithGoogle } from "../../firebase/authProvider"
-import { saveUser } from "../../firebase/firestoreProvider"
+import { getUserById, saveUser } from "../../firebase/firestoreProvider"
 import { checkingCredentials, login, logout } from "./authSlice"
 
 
@@ -19,7 +19,12 @@ export const startGoogleSignIn = (  ) => {
         const resultSingIn = await singInWithGoogle()
         if( !resultSingIn.ok ) return dispatch( logout( resultSingIn.errorMessage ))
 
-        dispatch( login(resultSingIn))
+        const response = await getUserById(resultSingIn.uid)
+
+        response.ok
+            ? dispatch( login(response.userDB))
+            : dispatch( login(resultSingIn))
+
     }
 }
 
