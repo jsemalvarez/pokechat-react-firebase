@@ -1,4 +1,4 @@
-import { singInWithGoogle } from "../../firebase/authProvider"
+import { logoutFirebase, singInWithGoogle } from "../../firebase/authProvider"
 import { saveUser } from "../../firebase/firestoreProvider"
 import { checkingCredentials, login, logout } from "./authSlice"
 
@@ -32,5 +32,14 @@ export const startSaveUser = ( user ) => {
         if( !result.ok ) return dispatch( logout( result.errorMessage ) )
 
         dispatch( login( result ) )
+    }
+}
+
+export const startLogOut = () => {
+    return async( dispatch ) => {
+        
+        await logoutFirebase()
+
+        dispatch( logout({errorMessage: null}) )
     }
 }
