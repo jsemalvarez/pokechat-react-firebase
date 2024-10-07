@@ -1,0 +1,361 @@
+
+a{
+    text-decoration: none;
+    color: var(--light-color);
+}
+
+.user-name{
+    text-transform: uppercase;
+}
+
+.btn-close{
+    height: 30px;
+    padding: 4px 16px;
+    cursor: pointer;
+    background-color: #8e44ad;
+    color: var(--light-color);
+    border: 1px solid var(--light-color);
+    border-radius: 16px;
+}
+
+.btn-send{
+    height: 30px;
+    padding: 4px 16px;
+    cursor: pointer;
+    background-color: #27ae60;
+    color: var(--light-color);
+    border: 1px solid var(--light-color);
+    border-radius: 16px;
+}
+
+.chat-page{
+    min-height: 100vh;
+}
+
+.navbar{
+    height: 70px;
+    padding: 4px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar__title{
+    letter-spacing: 2px;
+}
+
+.navbar__img-content{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.navbar--mystic{
+    border-bottom: 2px solid var(--mystic-light-color);
+}
+
+.navbar--valor{
+    border-bottom: 2px solid var(--valor-light-color);
+}
+
+.navbar--instinct{
+    border-bottom: 2px solid var(--instinct-light-color);
+}
+
+.navbar__right-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li{
+    padding-left: 8px;
+}
+
+.navbar img{
+    width: 50px;
+    border-radius: 50%;
+}
+
+.chat-page__content{
+    height: calc(100vh - 70px);
+    display: flex;
+}
+
+.friends{
+    /* width: 400px; */
+    width: 100%;
+    overflow: scroll;
+    scrollbar-width: none; /* Firefox */
+    display: flex;
+    flex-direction: column;
+}
+
+.friends::-webkit-scrollbar{
+    display: none; /* Chrome, Safari y otros WebKit */
+}
+
+.friends__search{
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.friends__search--mystic{
+    border-bottom: 1px solid var(--mystic-light-color);
+}
+
+.friends__search--valor{
+    border-bottom: 1px solid var(--valor-light-color);
+}
+
+.friends__search--instinct{
+    border-bottom: 1px solid var(--instinct-light-color);
+}
+
+.friends__search input{
+    height: 30px;
+    border-radius: 16px;
+    background-color: var(--light-color);
+    outline: none;
+    border: none;
+    padding-left: 12px;
+    padding-right: 12px;
+    color: var(--dark-color);
+    width: 80%;
+}
+
+.friends__search input::placeholder{
+    opacity: 1;
+}
+
+.friends__search button{
+    height: 30px;
+    cursor: pointer;
+    background-color: #27ae60;
+    border: 1px solid var(--light-color);
+    border-radius: 16px;
+    color: var(--light-color);
+    width: 80%;
+    padding: 4px;
+}
+
+.friend{
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.friend--mystic{
+    background-color: var(--mystic-color);
+    border-bottom: 1px solid var(--mystic-light-color);
+}
+
+.friend--instinct{
+    background-color: var(--instinct-color);
+    border-bottom: 1px solid var(--instinct-light-color);
+
+}
+
+.friend--valor{
+    background-color: var(--valor-color);
+    border-bottom: 1px solid var(--valor-light-color);
+
+}
+
+.friend img{
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* cambiar a messages */
+.messages{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages__header{
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.messages__header--mystic{
+    background-color: var(--mystic-light-color);
+}
+
+.messages__header--valor{
+    background-color: var(--valor-light-color);
+}
+
+.messages__header--instinct{
+    background-color: var(--instinct-light-color);
+}
+
+.messages__header img{
+    height: 54px;
+    border-radius: 4px;
+}
+
+.messages__content{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.messages__content--mystic{
+    background-color: var(--mystic-color);
+}
+
+.messages__content--valor{
+    background-color: var(--valor-color);
+}
+
+.messages__content--instinct{
+    background-color: var(--instinct-color);
+}
+
+.messages__message-item{
+    width: 80%;
+    margin: 0 8px 8px 8px;
+    padding: 8px 12px;
+}
+
+
+.messages__message-item--mystic{
+    background-color: var(--mystic-light-color);
+}
+
+.messages__message-item--valor{
+    background-color: var(--valor-light-color);
+}
+
+.messages__message-item--instinct{
+    background-color: var(--instinct-light-color);
+}
+
+
+
+.messages__message-item--right{
+    text-align: right;
+    border-radius: 12px 12px 0px 12px;
+    align-self: flex-end;
+}
+  
+.messages__message-item--left{
+    border-radius: 0px 12px 12px 12px;
+    text-align: left;
+}
+
+.messages__footer{
+    height: 50px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.messages__footer--mystic{
+    border-top: 2px solid var(--mystic-light-color);
+}
+
+.messages__footer--valor{
+    border-top: 2px solid var(--valor-light-color);
+}
+
+.messages__footer--instinct{
+    border-top: 2px solid var(--instinct-light-color);
+}
+
+
+.input-message{
+    min-height: 30px;
+    border-radius: 16px;
+    outline: none;
+    border: none;
+    padding-left: 12px;
+    padding-right: 12px;
+    flex-grow: 1;
+}
+
+.input-message--mystic{
+    background-color: var(--mystic-light-color);
+}
+
+.input-message--valor{
+    background-color: var(--valor-light-color);
+}
+
+.input-message--instinct{
+    background-color: var(--instinct-light-color);
+}
+
+.empty-chat{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.hide-on-movile{
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .navbar__img-content{
+        justify-content: flex-end;
+    }
+
+    .friends{
+        width: 250px;
+    }
+
+    /* Estilos para dispositivos un poco más grandes que móviles pequeños */
+    .hide-on-movile{
+        display: flex;
+    }    
+
+    .friends--mystic{
+        border-right: 4px solid var(--mystic-light-color);
+    }
+    
+    .friends--valor{
+        border-right: 4px solid var(--valor-light-color);
+    }
+    
+    .friends--instinct{
+        border-right: 4px solid var(--instinct-light-color);
+    }
+
+}
+
+
+@media (min-width: 800px) {
+
+    .friends{
+        width: 350px;
+    }
+
+}
+
+

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
-import { useForm } from "../../../common/hooks/useForm"
-import { addFriend, getFriendByUserName } from "../../../app/firebase/firestoreProvider"
+import { useForm } from "../../../../common/hooks/useForm"
+import { addFriend, getFriendByUserName } from "../../../../app/firebase/firestoreProvider"
+import { getTeamColorsFriendSearch } from "../../../../common/utils/getTeamColor"
 
 export const FriendSearch = () => {
 
@@ -41,8 +42,10 @@ export const FriendSearch = () => {
         await addFriend(currentUser, newFriend)
     }
 
+    const colorsTeam = getTeamColorsFriendSearch(currentUser.team)
+
     return (
-        <div className='friends__search'>
+        <div className={`friends__search ${colorsTeam}`}>
             <span>*se agregan automaticamente</span>
             <input 
                 type="text"
