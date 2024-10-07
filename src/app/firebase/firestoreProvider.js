@@ -148,3 +148,30 @@ export const addFriend = async (currentUser, newFriend) => {
     }
 
 }
+
+
+export const updateMessage = async(currentUser, friend, message) => {
+
+    try {
+
+        const roomRef = doc(FirebaseDB, "rooms", friend.roomid);
+        await updateDoc(roomRef, {
+          messages: arrayUnion({
+            message,
+            timestamp: new Date().toISOString(),
+            uid: currentUser.uid,
+          }),
+        });
+
+        return {
+            ok: true
+        }
+        
+    } catch (error) {
+        const errorMessage = error.message;
+        return {
+            ok: false,
+            errorMessage
+        }
+    }
+}
