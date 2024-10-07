@@ -3,9 +3,15 @@
 
 :root{
     --mystic-color: #2980b9;
-    --instinct-color: #f1c40f;
+    --mystic-light-color: #3498db;
+    /* --instinct-color: #f1c40f; */
+    --instinct-color: #f39c12;
+    --instinct-light-color: #f1c40f;
+    /* --valor-color: #c0392b; */
     --valor-color: #c0392b;
+    --valor-light-color: #e74c3c;
     --dark-color: rgb(35, 35, 39);
+    --light-color: white;
 }
 
 *{
@@ -15,10 +21,21 @@
 }
 
 body{
-    background-color: rgb(35, 35, 39);
+    background-color: var(--dark-color);
     font-family: "Lato", sans-serif;
     font-weight: 400;
     font-style: normal;
+    color: var(--light-color);
+}
+
+.bg-color--mystic{
+    background-color: var(--mystic-color);
+}
+.bg-color--valor{
+    background-color: var(--valor-color);
+}
+.bg-color--instinct{
+    background-color: var(--instinct-color);
 }
 
 .loader{
@@ -158,7 +175,7 @@ body{
     display: grid;
     place-items: center;
     backdrop-filter: blur(1.5rem);
-    border: 1px solid white;
+    border: 1px solid var(--light-color);
 }
 
 .login-page__form--content{
@@ -170,7 +187,6 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    color: white;
 }
 
 .login-page__form--prompt{
@@ -189,7 +205,6 @@ body{
     background-color: var(--mystic-color);
     width: 100%;
     padding: 8px;
-    color: white;
     letter-spacing: 4px;
     border-radius: 40px;
     cursor: pointer;
@@ -224,7 +239,6 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    color: white;
     backdrop-filter: blur(2.5rem);
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -262,7 +276,7 @@ body{
     box-sizing: border-box;
     outline: none;
     background-color: var(--dark-color);
-    color: white;
+    color: var(--light-color);
 }
 
 .config-user-page__input::placeholder{
@@ -270,7 +284,7 @@ body{
 }
 
 .config-user-page__input:focus{
-    background-color: white;
+    background-color: var(--light-color);
     color: var(--dark-color);
 }
 
@@ -280,24 +294,24 @@ body{
     width: 100%;
     padding: 12px 20px;
     box-sizing: border-box;
-    background-color: #c0392b;
+    background-color: var(--valor-color);
     margin-bottom: 4px;
     cursor: pointer;
 }
 
 .config-user-page__team-label--mystic{
     background-color: var(--mystic-color);
-    color: white;
+    color: var(--light-color);
 }
 
 .config-user-page__team-label--valor{
     background-color: var(--valor-color);
-    color: white;
+    color: var(--light-color);
 }
 
 .config-user-page__team-label--instinct{
     background-color: var(--instinct-color);
-    color: white;
+    color: var(--light-color);
 }
 
 .config-user-page__buttom{
@@ -305,7 +319,7 @@ body{
     background-color: #3CBC8D;
     border: 3px solid #3CBC8D;
     border-radius: 4px;
-    color: white;
+    color: var(--light-color);
     padding: 12px 20px;
     text-align: center;
     font-size: 16px;
@@ -317,6 +331,6 @@ body{
 }
 
 .config-user-page__buttom:hover{
-    background-color: white; 
+    background-color: var(--light-color); 
     color: #3CBC8D;
 }
