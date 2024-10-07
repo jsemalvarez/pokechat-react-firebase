@@ -2,6 +2,8 @@ import { useForm } from "../../../common/hooks/useForm"
 import { BgMultiTeam } from "../../../common/components/BgMultiTeam"
 import { useDispatch, useSelector } from "react-redux"
 import { startSaveUser } from "../../../app/state/auth/thunks"
+import { Navbar } from "../../../common/ui/Navbar"
+import { getTeamColorsBG } from "../../../common/utils/getTeamColor"
 
 
 export const ConfigUserPage = () => {
@@ -9,11 +11,14 @@ export const ConfigUserPage = () => {
   const currentUser = useSelector( state => state.auth);
   const dispatch = useDispatch()
 
-
   const { userName, team, onInputChange } = useForm({
     userName: currentUser.userName || '',
     team: currentUser.team || 'mystic'
   })
+
+  const hasConfigUserName = currentUser.userName;
+
+  const teamsColor = getTeamColorsBG(currentUser.team)
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -41,6 +46,14 @@ export const ConfigUserPage = () => {
   }
 
   return (
+    <>
+    {
+      hasConfigUserName && (
+      <div className={`${teamsColor}`}>
+        <Navbar pageUrl={{path:'/chat', name:'chat'}}/>
+      </div>
+      )
+    }
     <BgMultiTeam>
       <div className="config-user-page">
         <form 
@@ -129,5 +142,6 @@ export const ConfigUserPage = () => {
         </form>
       </div>
     </BgMultiTeam>
+    </>
   )
 }
