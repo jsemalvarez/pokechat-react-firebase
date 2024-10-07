@@ -36,7 +36,7 @@ export const startSaveUser = ( user ) => {
         const result = await saveUser( user )
         if( !result.ok ) return dispatch( logout( result.errorMessage ) )
 
-        dispatch( login( result ) )
+        dispatch( login( user ) )
     }
 }
 
