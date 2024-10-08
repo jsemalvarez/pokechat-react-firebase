@@ -50,7 +50,7 @@ export const FriendSearch = () => {
             <input 
                 type="text"
                 name="userName"
-                placeholder='nombre del jugador'
+                placeholder='apodo del jugador'
                 value={ userName }
                 onChange={ onInputChange }
             />
