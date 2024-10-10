@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { doc, getDoc, onSnapshot } from "firebase/firestore";
 import { FirebaseDB } from "../../../../app/firebase/config";
 
 import { FriendSearch } from "./FriendSearch";
 import { FriendItem } from './FriendItem';
 import { getTeamColorsFriends } from "../../../../common/utils/getTeamColor";
+import { setFriends } from "../../../../app/state/auth/authSlice";
 
 export const Friends = () => {
 
     const currentUser = useSelector( state => state.auth )
     const currentChat = useSelector( state => state.chat )
+    const dispatch = useDispatch();
 
-    const [friends, setFriends] = useState([]);
+    // const [friends, setFriends] = useState([]);
+    const friends = currentUser.friends
 
     useEffect(() => {
 
@@ -46,7 +49,8 @@ export const Friends = () => {
                     };
                 });
         
-                setFriends(friendsFormated);
+                // setFriends(friendsFormated);
+                dispatch( setFriends(friendsFormated) )
             });
         });
     

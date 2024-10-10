@@ -124,7 +124,7 @@ export const getTeamColorsChatFooter = (team) => {
     }
 }
 
-export const getTeamColorsChatFooterInput = (team) => {
+export const getTeamColorsInput = (team) => {
 
     switch (team) {
         case 'mystic':

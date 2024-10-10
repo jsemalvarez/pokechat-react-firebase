@@ -74,7 +74,7 @@ export const getFriendByUserName = async( userName ) => {
        const querySnapshot = await getDocs(customQuery);
 
        if (querySnapshot.empty) {
-           throw new Error(`No se encontro ningun usuario con el userName ${userName}`)
+           throw new Error(`${userName} no esta registrado`)
        }
 
        const friendDB = querySnapshot.docs[0].data();

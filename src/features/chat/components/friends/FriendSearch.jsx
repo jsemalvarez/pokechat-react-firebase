@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux"
 import { useForm } from "../../../../common/hooks/useForm"
 import { addFriend, getFriendByUserName } from "../../../../app/firebase/firestoreProvider"
-import { getTeamColorsFriendSearch } from "../../../../common/utils/getTeamColor"
+import { getTeamColorsFriendSearch, getTeamColorsInput } from "../../../../common/utils/getTeamColor"
+import { useState } from "react"
 
 export const FriendSearch = () => {
 
@@ -11,52 +12,70 @@ export const FriendSearch = () => {
         userName:''
     })
 
-    const onSerachFriend = async() => {
+    const [errorMessage, setErrorMessage] = useState(null)
 
-        if ( userName.trim() === '') {
-            console.log('userName no puede estar vacio')
+    const onSerachFriend = async( e ) => {
+        e.preventDefault()
+
+        if ( userName.trim() === '' ) {
+            setErrorMessage('userName no puede estar vacio')
             return;
         }
 
         const isMyUserName = currentUser.userName === userName
         if ( isMyUserName) {
-            console.log('no te puedes agregar a ti mismo')
+            setErrorMessage('no te puedes agregar a ti mismo')
             return;
         }
 
         const friends = currentUser.friends || []
-        const isAlreadyFriend = friends.find( friend => friend.email === userName)
+        const isAlreadyFriend = friends.find( friend => friend.userName === userName)
         if(isAlreadyFriend){
-            console.log('ya son amigos')
+            setErrorMessage('ya son amigos')
             return;
         }
         
         const result = await getFriendByUserName(userName)
 
         if(!result.ok){
-            console.log(result.errorMessage)
+            setErrorMessage(result.errorMessage)
             return;
         }
 
         const newFriend = result.data;
         await addFriend(currentUser, newFriend)
+        setErrorMessage('')
     }
 
     const colorsTeam = getTeamColorsFriendSearch(currentUser.team)
+    const colorTeamsInput = getTeamColorsInput(currentUser.team)
 
     return (
-        <div className={`friends__search ${colorsTeam}`}>
-            <span>*se agregan automaticamente</span>
+        <form 
+            onSubmit={ onSerachFriend }
+            className={`friends__search ${colorsTeam}`}
+        >          
+            
+            {
+                (errorMessage)
+                    ? (<div className="error">{errorMessage}</div>)
+                    : (<span>*se agregan automaticamente</span>)
+            }
+
             <input 
+                className={ colorTeamsInput }
                 type="text"
                 name="userName"
                 placeholder='apodo del jugador'
                 value={ userName }
                 onChange={ onInputChange }
             />
-            <button
-                onClick={ onSerachFriend }
+
+            <button 
+                type="submit" 
+                disabled={ userName.trim() === '' }
             >Agregar amigo</button>
-        </div>
+
+        </form>
   )
 }

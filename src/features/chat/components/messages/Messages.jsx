@@ -20,8 +20,6 @@ export const Messages = () => {
 
     const style = `messages ${isShowMessagesOnMovile ? '': 'hide-on-movile'}`
 
-    console.log({style})
-
     return (
         <div className={style}>
 

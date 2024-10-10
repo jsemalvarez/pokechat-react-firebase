@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useForm } from '../../../../common/hooks/useForm'
 import { saveMessage } from '../../../../app/firebase/firestoreProvider';
-import { getTeamColorsChatFooter, getTeamColorsChatFooterInput } from '../../../../common/utils/getTeamColor';
+import { getTeamColorsChatFooter, getTeamColorsInput } from '../../../../common/utils/getTeamColor';
 
 export const MessagesFooter = () => {
 
@@ -22,7 +22,7 @@ export const MessagesFooter = () => {
     }
 
     const colorTeamsChat = getTeamColorsChatFooter(currentUser.team)
-    const colorTeamsInput = getTeamColorsChatFooterInput(currentUser.team)
+    const colorTeamsInput = getTeamColorsInput(currentUser.team)
 
     return (
         <form

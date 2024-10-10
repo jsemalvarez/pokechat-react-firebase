@@ -11,8 +11,6 @@ export const FriendItem = ({friend}) => {
     dispatch( setFriend( friend ) )
   }
 
-  console.log({friend})
-
   const teamColors = getTeamColorsFriendItem(friend.team)
 
   //TODO: cambiar div por button
