@@ -14,16 +14,21 @@ export const MessagesFooter = () => {
       message: ''
     })
   
-    const onSendMessage = async () => {
-      await saveMessage( currentUser, friend, message )
-      onResetForm();
+    const onSendMessage = async ( e ) => {
+        e.preventDefault()
+        if(message.trim() === '') return 
+        await saveMessage( currentUser, friend, message )
+        onResetForm();
     }
 
     const colorTeamsChat = getTeamColorsChatFooter(currentUser.team)
     const colorTeamsInput = getTeamColorsChatFooterInput(currentUser.team)
 
     return (
-        <div className={`messages__footer ${colorTeamsChat}`}>
+        <form
+            onSubmit={ onSendMessage }
+            className={`messages__footer ${colorTeamsChat}`}
+        >
             <input 
                 className={`input-message ${ colorTeamsInput }`}
                 type="text" 
@@ -32,9 +37,10 @@ export const MessagesFooter = () => {
                 onChange={ onInputChange }
             />
             <button
+                type='subit'
                 className='btn-send'
-                onClick={ onSendMessage }
+                disabled={ message.trim() === '' }
             >Enviar</button>
-        </div>
+        </form>
     )
 }
