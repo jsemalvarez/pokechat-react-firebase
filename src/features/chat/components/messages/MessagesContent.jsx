@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { doc, onSnapshot } from "firebase/firestore";
@@ -13,6 +13,7 @@ export const MessagesContent = () => {
     const friend = chat.friend
     const currentUser = auth
   
+    const containerRef = useRef(null);
     const [messages, setMessages] = useState([])
   
     useEffect(() => {
@@ -25,10 +26,19 @@ export const MessagesContent = () => {
   
     }, [friend]);
 
+    useEffect(() => {
+        if (containerRef.current) {
+          containerRef.current.scrollTop = containerRef.current.scrollHeight;
+        }
+      }, [messages]);
+
     const teamColors = getTeamColorsMessagesContent(friend.team)
 
     return (
-        <div className={`messages__content ${teamColors}`}>
+        <div 
+            ref={ containerRef }
+            className={`messages__content ${teamColors}`}
+        >
 
             {
                 messages.map( (message, index) => {

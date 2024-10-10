@@ -228,10 +228,19 @@ a{
 }
 
 .messages__content{
+    max-height: 100%; 
+    height: 200px; 
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    /* justify-content: flex-end; */
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Safari y otros WebKit */
+.messages__content::-webkit-scrollbar{
+    display: none; 
 }
 
 .messages__content--mystic{
