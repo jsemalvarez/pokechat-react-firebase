@@ -233,14 +233,17 @@ a{
 
 .messages__header--mystic{
     background-color: var(--mystic-light-color);
+    border-bottom: 1px solid var(--mystic-color);
 }
 
 .messages__header--valor{
     background-color: var(--valor-light-color);
+    border-bottom: 1px solid var(--valor-color);
 }
 
 .messages__header--instinct{
     background-color: var(--instinct-light-color);
+    border-bottom: 1px solid var(--instinct-color);
 }
 
 .messages__header img{
