@@ -12,7 +12,7 @@ a{
     height: 30px;
     padding: 4px 16px;
     cursor: pointer;
-    background-color: #8e44ad;
+    background-color: #B71C1C;
     color: var(--light-color);
     border: 1px solid var(--light-color);
     border-radius: 16px;
@@ -35,10 +35,12 @@ a{
 }
 
 .error{
-    background-color: white;
-    color: red;
-    padding: 0 8px;
-    border-radius: 8px;
+    width: 80%;
+    background-color: #B71C1C;
+    border: 2px solid white;
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
     text-align: center;
 }
 
