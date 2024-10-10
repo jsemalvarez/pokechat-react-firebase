@@ -17,10 +17,10 @@ export const Friends = () => {
     useEffect(() => {
 
         const userRef = doc(FirebaseDB, "users", currentUser.uid);
-        const unsubcribe = onSnapshot(userRef, (document) => {
+        const unsubcribe = onSnapshot(userRef, (usersDocument) => {
     
             // traigo la informacion de mis amigos
-            const friendPromises = document.data()?.rooms.map((room) => {
+            const friendPromises = usersDocument.data()?.rooms.map((room) => {
                 const friendRef = doc(FirebaseDB, "users", room.friendId);
                 return getDoc(friendRef);
             });
@@ -30,11 +30,10 @@ export const Friends = () => {
 
                     const friend = friendResponse.data();
                     
-                    const room = document
+                    const room = usersDocument
                         .data()
                         ?.rooms.find((room) => room.friendId === friendResponse.id);       
                 
-        
                     return {
                         uid: friend.uid,
                         displayName: friend.displayName,
@@ -43,6 +42,7 @@ export const Friends = () => {
                         photoURL: friend.photoURL,
                         roomid: room?.roomid,
                         lastMessage: room?.lastMessage,
+                        timestamp: room.timestamp,
                     };
                 });
         

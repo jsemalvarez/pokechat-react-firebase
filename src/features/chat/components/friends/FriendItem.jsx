@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { setFriend } from "../../../../app/state/chat/chatSlice"
 import { getTeamColorsFriendItem } from "../../../../common/utils/getTeamColor"
+import { formatDate } from "../../../../common/utils/formatDate"
 
 export const FriendItem = ({friend}) => {
 
@@ -9,6 +10,8 @@ export const FriendItem = ({friend}) => {
   const onSetFriend = () => {
     dispatch( setFriend( friend ) )
   }
+
+  console.log({friend})
 
   const teamColors = getTeamColorsFriendItem(friend.team)
 
@@ -19,7 +22,11 @@ export const FriendItem = ({friend}) => {
       onClick={ onSetFriend }
     >
         <img src={friend.photoURL} alt={friend.userName} />
-        <p>{friend.userName}</p>
+        <div className="friend__name">
+          <p><strong>{friend.userName}</strong></p>
+          <p><small>{friend.lastMessage}</small></p>
+        </div>
+        <p><small>{formatDate(friend.timestamp)}</small></p>
     </div>
   )
 }

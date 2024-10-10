@@ -150,10 +150,11 @@ a{
 }
 
 .friend{
-    height: 50px;
+    height: 60px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
     padding-left: 8px;
     padding-right: 8px;
@@ -180,6 +181,20 @@ a{
     height: 40px;
     border-radius: 50%;
 }
+
+.friend__name{
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.friend__name small{
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.friend__name strong{
+    letter-spacing: 1px;
+}
+
 
 /* cambiar a messages */
 .messages{

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useForm } from '../../../../common/hooks/useForm'
-import { updateMessage } from '../../../../app/firebase/firestoreProvider';
+import { saveMessage } from '../../../../app/firebase/firestoreProvider';
 import { getTeamColorsChatFooter, getTeamColorsChatFooterInput } from '../../../../common/utils/getTeamColor';
 
 export const MessagesFooter = () => {
@@ -14,8 +14,8 @@ export const MessagesFooter = () => {
       message: ''
     })
   
-    const onClick = async () => {
-      await updateMessage( currentUser, friend, message )
+    const onSendMessage = async () => {
+      await saveMessage( currentUser, friend, message )
       onResetForm();
     }
 
@@ -33,7 +33,7 @@ export const MessagesFooter = () => {
             />
             <button
                 className='btn-send'
-                onClick={onClick}
+                onClick={ onSendMessage }
             >Enviar</button>
         </div>
     )

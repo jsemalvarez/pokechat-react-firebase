@@ -149,18 +149,54 @@ export const addFriend = async (currentUser, newFriend) => {
 
 }
 
+const updateLastMessage = async ({ db, uid, roomid, message }) => {
 
-export const updateMessage = async(currentUser, friend, message) => {
+    const userRef = doc(db, "users", uid);
+    const { rooms } = (await getDoc(userRef)).data();
+  
+    const roomUpdateLastMessage = rooms.map((room) => {
+      if (room.roomid === roomid) {
+        return {
+          ...room,
+          lastMessage: message,
+          timestamp: new Date().toISOString(),
+        };
+      }
+      return room;
+    });
+
+    await updateDoc(userRef, {
+      rooms: roomUpdateLastMessage,
+    });
+  };
+
+export const saveMessage = async(currentUser, friend, message) => {
 
     try {
 
-        const roomRef = doc(FirebaseDB, "rooms", friend.roomid);
+        const roomId = friend.roomid;
+
+        const roomRef = doc(FirebaseDB, "rooms", roomId);
         await updateDoc(roomRef, {
           messages: arrayUnion({
             message,
             timestamp: new Date().toISOString(),
             uid: currentUser.uid,
           }),
+        });
+
+        await updateLastMessage({ 
+            db: FirebaseDB, 
+            uid: currentUser.uid, 
+            roomid: roomId, 
+            message: message 
+        });
+
+        await updateLastMessage({ 
+            db: FirebaseDB, 
+            uid: friend.uid, 
+            roomid: roomId, 
+            message: message 
         });
 
         return {
