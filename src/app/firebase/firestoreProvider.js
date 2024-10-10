@@ -177,7 +177,8 @@ export const saveMessage = async(currentUser, friend, message) => {
         const roomId = friend.roomid;
 
         const roomRef = doc(FirebaseDB, "rooms", roomId);
-        await updateDoc(roomRef, {
+
+        const saveMessagePromise = updateDoc(roomRef, {
           messages: arrayUnion({
             message,
             timestamp: new Date().toISOString(),
@@ -185,23 +186,33 @@ export const saveMessage = async(currentUser, friend, message) => {
           }),
         });
 
-        await updateLastMessage({ 
+        const updateLastMessageMe = updateLastMessage({ 
             db: FirebaseDB, 
             uid: currentUser.uid, 
             roomid: roomId, 
             message: message 
         });
 
-        await updateLastMessage({ 
+        const updateLastMessageFriend = updateLastMessage({ 
             db: FirebaseDB, 
             uid: friend.uid, 
             roomid: roomId, 
             message: message 
         });
 
-        return {
-            ok: true
-        }
+        //TODO: hay que implementar una transaccion 
+        Promise.all([
+            saveMessagePromise, 
+            updateLastMessageMe, 
+            updateLastMessageFriend
+        ]).then(() => {
+                return {
+                    ok: true
+                }
+        }).catch((error) => {
+            throw error;
+        })
+
         
     } catch (error) {
         const errorMessage = error.message;
