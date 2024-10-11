@@ -23,8 +23,7 @@ export const ConfigUserPage = () => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    // TODO: validar que el userName no este vacio 
-    if( userName.trim() === ""){
+    if( userName.trim() === "" ){
       console.log('el userName no puede estar vacio')
       return;
     }
@@ -136,6 +135,7 @@ export const ConfigUserPage = () => {
           <button 
             className="config-user-page__buttom"
             type="submit"
+            disabled={ userName.trim() === "" }
           >Guardar</button>
 
 

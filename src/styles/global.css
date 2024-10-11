@@ -316,8 +316,8 @@ body{
 
 .config-user-page__buttom{
     width: 100%;
-    background-color: #3CBC8D;
-    border: 3px solid #3CBC8D;
+    background-color: #27ae60;
+    border: 3px solid #27ae60;
     border-radius: 4px;
     color: var(--light-color);
     padding: 12px 20px;
@@ -331,6 +331,13 @@ body{
 }
 
 .config-user-page__buttom:hover{
-    background-color: var(--light-color); 
-    color: #3CBC8D;
+    background-color: #A5D6A7; 
+    color: #27ae60;
+}
+
+.config-user-page__buttom:disabled{
+    background-color: gray;
+    color: rgba(255, 255, 255, 0.5);
+    border: 3px solid gray;
+    cursor: no-drop;
 }
