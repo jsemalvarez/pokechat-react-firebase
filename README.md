@@ -1,8 +1,6 @@
 # Pokechat React + Firebase
 chat for pokemon go players
 
-## React + Vite
-
 ## scripts
 ```
 
