@@ -1,4 +1,4 @@
-# Proyecto: Pokechat React
+# Proyecto: Pokechat
 Este es un chat para jeugadores del Pokemon GO. Está construido con React, TypeScript, Vite y Firebase. A continuación, encontrarás una guía sobre cómo configurarlo y ejecutarlo en desarrollo.
 
 
