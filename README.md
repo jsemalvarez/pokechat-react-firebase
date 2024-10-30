@@ -56,7 +56,7 @@ Sigue estos pasos para ejecutar el proyecto en tu máquina local:
 
 ```
 3. Configura las variables de entorno:  
-Renombra el archivo __.env.template__ a __.env__ en la raíz del proyecto y copia las claves de Firebase que configuraste anteriormente.
+Renombra el archivo `.env.template` a `.env` en la raíz del proyecto y copia las claves de Firebase que configuraste anteriormente.
 ```javascript
 
     # FIREBASE PUBLIC KEYS
@@ -78,7 +78,36 @@ Renombra el archivo __.env.template__ a __.env__ en la raíz del proyecto y copi
 5. Abre el proyecto:
 Accede a http://localhost:3000 en tu navegador para ver el proyecto en desarrollo.
 
-## scripts
+## Configurar GitHub Actions para Deploy Automático en Firebase Hosting ( Opcional )
+
+> [!NOTE]
+> Este proyecto tiene dos archivos YAML de Workflow en ` .github/workflows ` para hacer deploy automatico al hosting cuando se hace un PR o un MERGE en la rama main. 
+> Los puede borrar y no tendra deploy automatico o pude hacer la siguiente configuracion y usarlos
+
+1. Genera un Token de Autenticación en Firebase
+- Instala Firebase CLI (si no lo has hecho).
+```javascript
+    npm install -g firebase-tools
+```
+- Inicia sesión en Firebase
+```javascript
+    firebase login
+```
+> [!IMPORTANT]  
+> El siguiente comando generará un token que se verá como ` 1//0abcd... `, el cual necesitas copiar y guardar para el siguiente paso.
+- Genera un token de despliegue. Este token permitirá a GitHub Actions autenticarse con Firebase.  
+```javascript
+    firebase login:ci
+```
+
+2. Agrega el Token de Firebase a los Secretos de GitHub
+    - Ve al repositorio en GitHub y abre la pestaña Settings (Configuración).
+    - En el menú lateral, selecciona Secrets and variables > Actions.
+    - Haz clic en New repository secret.
+    - Crea un secreto con el nombre `FIREBASE_SERVICE_ACCOUNT_POGO_MDP_CHAT` y pega el token que generaste en el paso anterior.
+    - Guarda el secreto.
+      
+## SCRIPTS disponibles
 ```
 
     "dev": "vite", // start dev server, aliases: `vite dev`, `vite serve`
