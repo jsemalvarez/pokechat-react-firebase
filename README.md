@@ -10,6 +10,13 @@ Este es un chat para jeugadores del Pokemon GO. Está construido con React, Vite
 Node.js instalado (recomendado: v18 o superior).  
 Firebase CLI ( recomendado )
 
+## Instala Firebase CLI
+```javascript
+
+    npm install -g firebase-tools
+
+```
+
 ## Configuración del Proyecto en Firebase
 
 Para comenzar, necesitas configurar un proyecto en Firebase:
